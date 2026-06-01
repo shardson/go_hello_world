@@ -5,10 +5,11 @@ WORKDIR /
 COPY go.mod ./
 RUN go mod download
 
-COPY main.go ./
+COPY cmd ./cmd
+COPY internal ./internal
 
-RUN go build -o main.go
+RUN go build -o server ./cmd/server
 
 EXPOSE 8080
 
-CMD ["./main.go"]
+CMD ["./server"]
